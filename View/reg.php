@@ -82,6 +82,19 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <label for="date">Date of Birth:</label>
+                    </td>
+                    <td>
+                        <input type="date" name='date' value="date" placeholder="YYYY-MM-DD">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <fieldset>
                             <legend>
@@ -95,21 +108,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <fieldset>
-                            <legend>
-                                <b>Date of Birth</b>
-                            </legend>
-                            <input type='number' name=date max=31 min=1>/
-                            <input type='number' name=month max=12 min=1>/
-                            <input type='number' name=year max=3000 min=1950>
-                            <label><i>dd/mm/yyyy</i></label>
-                        </fieldset>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="2">
-                        <input type='submit' value='Submit'>
+                        <input type='submit' value='Submit' formmethod="post" formaction="../Controller/checkreg.php">
                         <input type='reset' value='Reset'>
                         Already have an account?
                         <a href='./login.php'>Login here!</a>

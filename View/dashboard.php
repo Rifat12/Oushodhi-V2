@@ -89,7 +89,7 @@ $info = json_decode($a, true);
                     Date of Birth:
                 </td>
                 <td>
-                    <?php echo $info['date'] ?>/<?php echo $info['month'] ?>/<?php echo $info['year'] ?>
+                    <?php echo $info['date'] ?>
                 </td>
             </tr>
             <tr>

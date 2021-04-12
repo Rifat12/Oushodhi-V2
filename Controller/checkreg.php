@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_POST['name']) || isset($_POST['email']) || isset($_POST['username']) || isset($_POST['password']) || isset($_POST['confirmpassword']) || isset($_POST['gender']) || isset($_POST['date']) || isset($_POST['month']) || isset($_POST['year']) || isset($_POST['gender'])) {
+if (isset($_POST['name']) || isset($_POST['email']) || isset($_POST['username']) || isset($_POST['password']) || isset($_POST['confirmpassword']) || isset($_POST['date']) ||  isset($_POST['gender'])) {
 
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -9,8 +9,6 @@ if (isset($_POST['name']) || isset($_POST['email']) || isset($_POST['username'])
     $confirmpassword = $_POST['confirmpassword'];
     $gender = $_POST['gender'];
     $date = $_POST['date'];
-    $month = $_POST['month'];
-    $year = $_POST['year'];
 
 
     if (!ctype_alpha(str_replace(' ', '', $name))) {
@@ -47,8 +45,6 @@ if (isset($_POST['name']) || isset($_POST['email']) || isset($_POST['username'])
     $array1 += ['email' => $email];
     $array1 += ['gender' => $gender];
     $array1 += ['date' => $date];
-    $array1 += ['month' => $month];
-    $array1 += ['year' => $year];
 
 
 
