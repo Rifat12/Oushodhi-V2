@@ -1,4 +1,14 @@
 <?php
+session_start();
+if ($_SESSION['flag'] != true) {
+    header('location: login.php');
+}
+?>
+
+
+
+<?php
+
 $s_april = 25000;
 $balance = -5000;
 $w_amount = ($s_april - $balance) * .9;

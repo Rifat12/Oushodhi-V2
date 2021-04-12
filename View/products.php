@@ -1,3 +1,11 @@
+<?php
+session_start();
+if ($_SESSION['flag'] != true) {
+    header('location: login.php');
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,7 +87,7 @@
                 Request A Product to Owner
             </summary>
 
-            <table border="1">
+            <table>
                 <thead>
                     <tr>
                         <th>Product ID</th>
@@ -113,7 +121,7 @@
                 Insert A Product
             </summary>
 
-            <table border="1">
+            <table>
                 <thead>
                     <tr>
                         <th>Product ID</th>
