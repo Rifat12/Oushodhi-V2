@@ -83,6 +83,19 @@
                 </tr>
                 <tr>
                     <td>
+                        <label for="fav">Favourite Color: </label>
+                    </td>
+                    <td>
+                        <input type="text" name='fav'>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label for="date">Date of Birth:</label>
                     </td>
                     <td>

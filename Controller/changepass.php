@@ -28,5 +28,5 @@ if (isset($_POST['oldpassword']) || isset($_POST['password']) || isset($_POST['c
     file_put_contents('../Model/users.json', $newJsonString);
     echo "<h1>Password Changed Successfully</h1>";
     echo "<br>";
-    echo '<h1> <a href="logout.php">Login again!</a> </h1>';
+    echo '<h1> <a href="../View/logout.php">Login again!</a> </h1>';
 };

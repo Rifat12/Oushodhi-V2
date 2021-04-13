@@ -10,15 +10,6 @@ session_start();
 if (isset($_POST['logusername']) && isset($_POST['logpassword'])) {
     $username = $_POST['logusername'];
     $password = $_POST['logpassword'];
-    /* 
-
-    if ($username == $_SESSION['username'] && $password == $_SESSION['password']) {
-        $_SESSION['flag'] = true;
-        header('location: dashboard.php');
-    
-    } 
-    */
-    //
 
     if (in_array($password, $aa) && in_array($username, $aa)) {
         $_SESSION['flag'] = true;
@@ -28,6 +19,6 @@ if (isset($_POST['logusername']) && isset($_POST['logpassword'])) {
         //header('location: login.php');
         echo "<h1>Invalid Credentials :( Please Try again.</h1>";
         echo "<br>";
-        echo '<h1> <a href="login.php">Try Again</a> </h1>';
+        echo '<h1> <a href="../View/login.php">Try Again</a> </h1>';
     }
 }

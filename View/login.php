@@ -44,6 +44,11 @@
                         <a href='./reg.php'>Create One!</a>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="2">
+                        <a href='./forget.php'>Forgot Password?</a>
+                    </td>
+                </tr>
             </table>
         </form>
     </fieldset>

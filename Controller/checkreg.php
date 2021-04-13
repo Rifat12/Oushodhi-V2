@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmpassword']) && isset($_POST['date']) && isset($_POST['gender'])) {
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmpassword']) && isset($_POST['date'])  && isset($_POST['fav'])  && isset($_POST['gender'])) {
 
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -9,6 +9,8 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username'])
     $confirmpassword = $_POST['confirmpassword'];
     $gender = $_POST['gender'];
     $date = $_POST['date'];
+    $fav = $_POST['fav'];
+
 
     for ($i = 0; $i < strlen($name); $i++) {
         if (!((ord($name[$i]) >= 97 && ord($name[$i]) <= 122)) && !((ord($name[$i]) >= 65 && ord($name[$i]) <= 90)) && !(ord($name[$i]) == 32)) {
@@ -64,6 +66,8 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username'])
     $array1 += ['email' => $email];
     $array1 += ['gender' => $gender];
     $array1 += ['date' => $date];
+    $array1 += ['fav' => $fav];
+
 
 
 
