@@ -12,26 +12,74 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username'])
     $fav = $_POST['fav'];
 
 
-    for ($i = 0; $i < strlen($name); $i++) {
-        if (!((ord($name[$i]) >= 97 && ord($name[$i]) <= 122)) && !((ord($name[$i]) >= 65 && ord($name[$i]) <= 90)) && !(ord($name[$i]) == 32)) {
-            echo 'Name can only be alphabetical';
-            break;
-            return;
+
+    function isAlphabetic($name)
+    {
+        $name = str_replace(' ', '', $name);
+
+        for ($i = 0; $i < strlen($name); $i++) {
+            if (!(($name[$i] >= 'a' && $name[$i] <= 'z') || ($name[$i] >= 'A' && $name[$i] <= 'Z'))) {
+                return false;
+            }
         }
+        return true;
     }
 
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Please enter e valid E-mail!";
+    if (!isAlphabetic($name)) {
+        echo 'Name and must be Alphabets only';
         return;
     }
 
-    for ($i = 0; $i < strlen($username); $i++) {
-        if (!((ord($username[$i]) >= 97 && ord($username[$i]) <= 122)) && !((ord($username[$i]) >= 65 && ord($username[$i]) <= 90))  && !((ord($username[$i]) >= 48 && ord($username[$i]) <= 57))) {
-            echo 'Username can be only alphanumeric';
-            break;
-            return;
+
+    if (strlen(trim($name)) < 6) {
+        echo "Fullname must be at least 5 characters";
+        return;
+    }
+
+    function validateEmail($email)
+    {
+        $emailIsValid = FALSE;
+
+        if (!empty($email)) {
+            $domain = ltrim(stristr($email, '@'), '@') . '.';
+            $user   = stristr($email, '@', TRUE);
+
+            if (!empty($user) && !empty($domain) && checkdnsrr($domain)) {
+                $emailIsValid = TRUE;
+            }
         }
+
+        return $emailIsValid;
+    }
+
+    if (!validateEmail($email)) {
+        echo "Invalid Email";
+    }
+
+
+
+
+    if (strlen(trim($username)) < 4) {
+        echo "Username must be at least 3 characters";
+        return;
+    }
+
+
+    function isAlphanum($username)
+    {
+        $name = trim($username);
+
+        for ($i = 0; $i < strlen($name); $i++) {
+            if (!(($name[$i] >= 'a' && $name[$i] <= 'z') || ($name[$i] >= 'A' && $name[$i] <= 'Z') || ($name[$i] >= 0 && $name[$i] <= 9))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    if (!isAlphanum($username)) {
+        echo 'Username must be Alphanumeric';
+        return;
     }
 
     if ($password != $confirmpassword) {
@@ -43,20 +91,21 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username'])
         echo 'Password must be atleast 8 characters!';
         return;
     }
-    $flag = 0;
-    for ($i = 0; $i < strlen($password); $i++) {
-        if ($password[$i] === '@' || $password[$i] === '#' || $password[$i] === '$' || $password[$i] === '%') {
-            $flag += 1;
-            break;
+
+    function isSpecial($password)
+    {
+        for ($i = 0; $i < strlen($password); $i++) {
+            if ($password[$i] === '@' || $password[$i] === '#' || $password[$i] === '$' || $password[$i] === '%') {
+                return true;
+            }
         }
+        return false;
     }
 
-    if ($flag < 1) {
+    if (!isSpecial($password)) {
         echo 'Password must have a special character!';
         return;
     }
-
-
 
 
     $array1 = [];
@@ -67,9 +116,6 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username'])
     $array1 += ['gender' => $gender];
     $array1 += ['date' => $date];
     $array1 += ['fav' => $fav];
-
-
-
 
     $json = json_encode($array1, JSON_PRETTY_PRINT);
     file_put_contents("../Model/users.json", $json);
