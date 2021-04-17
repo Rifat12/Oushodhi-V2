@@ -23,7 +23,7 @@ if ($_SESSION['flag'] != true) {
 
 
     <div class="insert">
-        <form action="productCRUD.php" method="post">
+        <form action="../Controller/productCRUD.php" method="post">
             <h3>Insert A Product</h3>
             <table>
                 <thead>
@@ -44,8 +44,8 @@ if ($_SESSION['flag'] != true) {
                         <td><input type="text" name="p_name" id=""></td>
                         <td><input type="text" name="p_type" id=""></td>
                         <td><input type="text" name="Manufacturer" id=""></td>
-                        <td><input type="text" name="Stock" id=""></td>
-                        <td><input type="text" name="MRP" id=""></td>
+                        <td><input type="number" name="Stock" id=""></td>
+                        <td><input type="number" name="MRP" id=""></td>
 
                     </tr>
                 </tbody>
@@ -59,8 +59,11 @@ if ($_SESSION['flag'] != true) {
             </table>
 
         </form>
-
     </div>
+
+    <?php require("../Controller/productCRUD.php"); ?>
+
+
     <div class="wrapper">
         <details>
             <summary>

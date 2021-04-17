@@ -1,73 +1,65 @@
 <?php
 
-	function insertProduct($productDetails)
-	{
-		$conn = getConnection();
-		$sql = "insert into products values('', '{$productDetails['name']}', '{$productDetails['buyingPrice']}', '{$productDetails['sellingPrice']}', '{$productDetails['displayable']}')";
-		
-		if(mysqli_query($conn, $sql))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+function insertProduct($arr)
+{
+	$conn = getConnection();
+	$sql = "insert into products (p_id, p_name, p_type, manufacturer, stock, mrp) values('', '{$arr[1]}', '{$arr[2]}', '{$arr[3]}', '{$arr[4]}', '{$arr[5]}')";
+
+	if (mysqli_query($conn, $sql)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+
+function getAllProduct()
+{
+	$conn = getConnection();
+	$sql = "select * from products";
+	$result = mysqli_query($conn, $sql);
+	$products = [];
+
+	while ($row = mysqli_fetch_assoc($result)) {
+		array_push($products, $row);
 	}
 
-	function getAllProduct()
-	{
-		$conn = getConnection();
-		$sql = "select * from products";
-		$result = mysqli_query($conn, $sql);
-		$users =[];
+	return $products;
+}
 
-		while($row = mysqli_fetch_assoc($result))
-		{
-			array_push($users, $row); 
-		}
+function getProductById($id)
+{
 
-		return $users;
+	$conn = getConnection();
+	$sql = "select * from products where id='{$id}'";
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_assoc($result);
+
+	return $row;
+}
+
+function updateProduct($id, $arr)
+{
+
+	$conn = getConnection();
+	$sql = "update products set name = '{$arr['name']}', buyingPrice='{$arr['buyingPrice']}', sellingPrice='{$arr['sellingPrice']}', displayable='{$arr['displayable']}' where id='{$id}'";
+
+	if (mysqli_query($conn, $sql)) {
+		return true;
+	} else {
+		return false;
 	}
+}
 
-	function getProductById($id)
-	{
+function deleteProduct($id)
+{
+	$conn = getConnection();
+	$sql = "delete from products where id='{$id}'";
 
-		$conn = getConnection();
-		$sql = "select * from products where id='{$id}'";
-		$result = mysqli_query($conn, $sql);
-		$row = mysqli_fetch_assoc($result);
-
-		return $row;
+	if (mysqli_query($conn, $sql)) {
+		return true;
+	} else {
+		return false;
 	}
-
-	function updateProduct($id, $productDetails)
-	{
-
-		$conn = getConnection();
-		$sql = "update products set name = '{$productDetails['name']}', buyingPrice='{$productDetails['buyingPrice']}', sellingPrice='{$productDetails['sellingPrice']}', displayable='{$productDetails['displayable']}' where id='{$id}'";
-		
-		if(mysqli_query($conn, $sql))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	function deleteProduct($id)
-	{
-		$conn = getConnection();
-		$sql = "delete from products where id='{$id}'";
-		
-		if(mysqli_query($conn, $sql))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+}
