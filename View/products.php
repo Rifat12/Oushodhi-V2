@@ -22,43 +22,7 @@ if ($_SESSION['flag'] != true) {
     <br>
 
 
-    <div class="insert" align="center">
-        <form action="../Controller/productCRUD.php" method="post">
-            <h3>Insert A Product</h3>
-            <table>
-                <thead>
 
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Product Type</th>
-                        <th>Manufacturer</th>
-                        <th>Stock Remaining</th>
-                        <th>MRP</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="p_name" id=""></td>
-                        <td><input type="text" name="p_type" id=""></td>
-                        <td><input type="text" name="Manufacturer" id=""></td>
-                        <td><input type="number" name="Stock" id=""></td>
-                        <td><input type="number" name="MRP" id=""></td>
-
-                    </tr>
-                </tbody>
-            </table>
-            <table>
-                <tr>
-                    <td>
-                        <button type="submit" name="save">Save</button>
-                    </td>
-                </tr>
-            </table>
-
-        </form>
-    </div>
-    <h3 align="center">Available Products</h3>
     <?php require("../Controller/productCRUD.php"); ?>
 
     <br>

@@ -32,9 +32,11 @@ function getProductById($id)
 {
 
 	$conn = getConnection();
-	$sql = "select * from products where id='{$id}'";
+	$sql = "select * from products where p_id='{$id}'";
 	$result = mysqli_query($conn, $sql);
 	$row = mysqli_fetch_assoc($result);
+
+
 
 	return $row;
 }
