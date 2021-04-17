@@ -3,7 +3,7 @@
 function insertProduct($arr)
 {
 	$conn = getConnection();
-	$sql = "insert into products (p_id, p_name, p_type, manufacturer, stock, mrp) values('', '{$arr[1]}', '{$arr[2]}', '{$arr[3]}', '{$arr[4]}', '{$arr[5]}')";
+	$sql = "insert into products (p_id, p_name, p_type, manufacturer, stock, mrp) values('', '{$arr[0]}', '{$arr[1]}', '{$arr[2]}', '{$arr[3]}', '{$arr[4]}')";
 
 	if (mysqli_query($conn, $sql)) {
 		return true;

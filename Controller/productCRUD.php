@@ -5,9 +5,9 @@ require_once('../model/productModel.php');
 
 
 if (isset($_POST['save'])) {
-    $data = array($_POST['p_id'], $_POST['p_name'], $_POST['p_type'], $_POST['Manufacturer'], $_POST['Stock'], $_POST['MRP']);
+    $data = array($_POST['p_name'], $_POST['p_type'], $_POST['Manufacturer'], $_POST['Stock'], $_POST['MRP']);
     if (($_POST['p_name'] == "" || $_POST['p_type'] == "" || $_POST['Manufacturer'] == "")) {
-        echo "Please Fill data";
+        echo "Please Fill all fields";
         return;
     }
     if (insertProduct($data)) {

@@ -29,7 +29,6 @@ if ($_SESSION['flag'] != true) {
                 <thead>
 
                     <tr>
-                        <th>Product ID</th>
                         <th>Product Name</th>
                         <th>Product Type</th>
                         <th>Manufacturer</th>
@@ -40,7 +39,6 @@ if ($_SESSION['flag'] != true) {
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" name="p_id" id=""></td>
                         <td><input type="text" name="p_name" id=""></td>
                         <td><input type="text" name="p_type" id=""></td>
                         <td><input type="text" name="Manufacturer" id=""></td>
