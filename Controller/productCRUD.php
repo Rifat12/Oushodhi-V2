@@ -19,6 +19,18 @@ if (isset($_POST['save'])) {
     }
 }
 
+if (isset($_POST['del'])) {
+    $id = $_POST['del'];
+    if (!deleteProduct($id)) {
+        echo "Deletion Failed";
+        echo  $id;
+        return;
+    } else {
+        header('location: ../view/products.php');
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +45,7 @@ if (isset($_POST['save'])) {
 
 <body>
 
-    <table border='1'>
+    <table border="1px solid black" align="center">
         <thead>
             <tr>
                 <th>Product ID</th>
@@ -42,7 +54,6 @@ if (isset($_POST['save'])) {
                 <th>Manufacturer</th>
                 <th>Remaining Stock</th>
                 <th>MRP</th>
-                <th colspan="2">Action</th>
                 <th colspan="2">Action</th>
             </tr>
         </thead>
@@ -56,6 +67,12 @@ if (isset($_POST['save'])) {
                 <td> <?php echo $products[$i]['manufacturer']; ?></td>
                 <td> <?php echo $products[$i]['stock']; ?></td>
                 <td> <?php echo $products[$i]['mrp']; ?></td>
+                <td>
+                    <form action="../Controller/productCRUD.php" method="post"> <button type="submit" name="del">Delete</button>
+                        <input type="hidden" name="del" value="<?php echo $products[$i]['p_id']; ?>">
+                    </form>
+                </td>
+
 
             </tr>
         <?php } ?>

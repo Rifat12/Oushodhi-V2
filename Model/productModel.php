@@ -43,7 +43,7 @@ function updateProduct($id, $arr)
 {
 
 	$conn = getConnection();
-	$sql = "update products set name = '{$arr['name']}', buyingPrice='{$arr['buyingPrice']}', sellingPrice='{$arr['sellingPrice']}', displayable='{$arr['displayable']}' where id='{$id}'";
+	$sql = "update products set p_name = '{$arr[0]}', p_type='{$arr[1]}', manufacturer='{$arr[2]}', stock='{$arr[3]}', mrp='{$arr[4]}' where p_id='{$id}'";
 
 	if (mysqli_query($conn, $sql)) {
 		return true;
@@ -55,7 +55,7 @@ function updateProduct($id, $arr)
 function deleteProduct($id)
 {
 	$conn = getConnection();
-	$sql = "delete from products where id='{$id}'";
+	$sql = "delete from products where p_id='{$id}'";
 
 	if (mysqli_query($conn, $sql)) {
 		return true;

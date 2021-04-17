@@ -22,7 +22,7 @@ if ($_SESSION['flag'] != true) {
     <br>
 
 
-    <div class="insert">
+    <div class="insert" align="center">
         <form action="../Controller/productCRUD.php" method="post">
             <h3>Insert A Product</h3>
             <table>
@@ -58,8 +58,12 @@ if ($_SESSION['flag'] != true) {
 
         </form>
     </div>
-
+    <h3 align="center">Available Products</h3>
     <?php require("../Controller/productCRUD.php"); ?>
+
+    <br>
+    <br>
+    <br>
 
 
     <div class="wrapper">
