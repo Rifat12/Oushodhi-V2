@@ -21,66 +21,46 @@ if ($_SESSION['flag'] != true) {
 
     <br>
 
-    <div class="wrapper">
-        <details>
-            <summary>
-                Product Currently in stock
-            </summary>
 
-            <table border="1">
+    <div class="insert">
+        <form action="productCRUD.php" method="post">
+            <h3>Insert A Product</h3>
+            <table>
                 <thead>
+
                     <tr>
                         <th>Product ID</th>
                         <th>Product Name</th>
                         <th>Product Type</th>
-                        <th>Manfacturer</th>
+                        <th>Manufacturer</th>
                         <th>Stock Remaining</th>
                         <th>MRP</th>
-                        <th>Prescription Requirement</th>
-                        <th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
-                        <th>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>01</td>
-                        <td>Napa</td>
-                        <td>Medicine</td>
-                        <td>Beximco</td>
-                        <td>500</td>
-                        <td>2/-</td>
-                        <td>Yes</td>
-                        <td><a href="">Edit</a></td>
-                        <td><a href="">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>02</td>
-                        <td>Asphalt 30</td>
-                        <td>syringe</td>
-                        <td>Acme</td>
-                        <td>20</td>
-                        <td>250/-</td>
-                        <td>Yes</td>
-                        <td><a href="">Edit</a></td>
-                        <td><a href="">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>03</td>
-                        <td>RyClean</td>
-                        <td>Hand sanitizer</td>
-                        <td>K&amp;L</td>
-                        <td>100</td>
-                        <td>70/-</td>
-                        <td>No</td>
-                        <td><a href="">Edit</a></td>
-                        <td><a href="">Delete</a></td>
+                        <td><input type="text" name="p_id" id=""></td>
+                        <td><input type="text" name="p_name" id=""></td>
+                        <td><input type="text" name="p_type" id=""></td>
+                        <td><input type="text" name="Manufacturer" id=""></td>
+                        <td><input type="text" name="Stock" id=""></td>
+                        <td><input type="text" name="MRP" id=""></td>
+
                     </tr>
                 </tbody>
             </table>
+            <table>
+                <tr>
+                    <td>
+                        <button type="submit" name="save">Save</button>
+                    </td>
+                </tr>
+            </table>
 
-        </details>
+        </form>
+
     </div>
-
     <div class="wrapper">
         <details>
             <summary>
@@ -108,49 +88,7 @@ if ($_SESSION['flag'] != true) {
             <table>
                 <tr>
                     <td>
-                        <button type="submit">Confirm</button>
-                    </td>
-                </tr>
-            </table>
-
-        </details>
-    </div>
-    <div class="wrapper">
-        <details>
-            <summary>
-                Insert A Product
-            </summary>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Product Type</th>
-                        <th>Manfacturer</th>
-                        <th>Stock Remaining</th>
-                        <th>MRP</th>
-                        <th>Prescription Requirement</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-                        <td><input type="text" name="" id=""></td>
-
-                    </tr>
-                </tbody>
-            </table>
-            <table>
-                <tr>
-                    <td>
-                        <button type="submit">Confirm</button>
+                        <button type="submit">Save</button>
                     </td>
                 </tr>
             </table>
