@@ -15,12 +15,7 @@ if (isset($_POST['del'])) {
     }
 }
 
-
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,15 +29,13 @@ if (isset($_POST['del'])) {
 
 <body>
 
-    <h2 align="center">Accepted Orders</h2>
-
     <table border="1px solid black" align="center">
         <thead>
             <tr>
                 <th>Order No</th>
                 <th>Customer ID</th>
                 <th>Order Value</th>
-                <th>Shipping Method Type</th>
+                <th>Shipping Method</th>
                 <th>Shipping Address</th>
                 <th colspan="2">Action</th>
             </tr>
@@ -65,9 +58,6 @@ if (isset($_POST['del'])) {
         <?php } ?>
 
     </table>
-
-
-
 </body>
 
 </html>

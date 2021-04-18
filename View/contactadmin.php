@@ -27,7 +27,9 @@ if ($_SESSION['flag'] != true) {
                         Subject:
                     </td>
                     <td>
-                        <input type="text" name='sub'>
+                        <input id="sub" type="text" name='sub' value="<?php
+                                                                        $s = $_COOKIE['sub'] ?? "";
+                                                                        echo $s; ?>">
                     </td>
                 </tr>
                 <tr>
@@ -57,7 +59,9 @@ if ($_SESSION['flag'] != true) {
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea id="msg" name="msg" rows="4" cols="50">  </textarea>
+                        <textarea id="msg" name="msg" rows="4" cols="50"> <?php
+                                                                            $m = $_COOKIE['msg'] ?? "";
+                                                                            echo $m; ?> </textarea>
                     </td>
                 </tr>
                 <tr>
@@ -65,7 +69,8 @@ if ($_SESSION['flag'] != true) {
 
                 <tr>
                     <td>
-                        <input type='submit' name="send" value='Send'> <input type='reset' value='Reset'>
+                        <input type='submit' name="send" value='Send'><button type="button" onclick="document.getElementById('sub').value = ''">Clear Subject</button> <button type="button" onclick="document.getElementById('msg').value = ''">Clear Message</button>
+
                     </td>
                 </tr>
             </table>
@@ -90,12 +95,12 @@ if ($_SESSION['flag'] != true) {
         //$_COOKIE['sub'] = $sub;
         //$_COOKIE['msg'] = $msg;
 
-        if (strlen(str_replace(' ', '', $sub)) < 10) {
+        if (strlen(str_replace(' ', '', $sub)) < 3) {
             echo "<mark>  Subject needs to  consist of atleast 10 characters<mark/>";
             return;
         }
 
-        if (strlen(str_replace(' ', '', $msg)) < 50) {
+        if (strlen(str_replace(' ', '', $msg)) < 5) {
             echo "<mark>  Message Body needs to  consist of atleast 50 characters<mark/>";
             return;
         }

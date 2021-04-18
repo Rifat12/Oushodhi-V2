@@ -40,9 +40,7 @@ if ($_SESSION['flag'] != true) {
                         Subject:
                     </td>
                     <td>
-                        <input type="text" name='sub' value="<?php
-                                                                $sub = $_COOKIE['sub'] ?? "";
-                                                                echo $sub; ?>">
+                        <input type="text" name='sub' value="">
                     </td>
                 </tr>
                 <tr>
@@ -98,12 +96,12 @@ if ($_SESSION['flag'] != true) {
         $sub = $_POST['sub'];
         $msg = $_POST['message'];
 
-        if (strlen(str_replace(' ', '', $sub)) < 10) {
+        if (strlen(str_replace(' ', '', $sub)) < 3) {
             echo "<mark>  Subject needs to  consist of atleast 10 characters<mark/>";
             return;
         }
 
-        if (strlen(str_replace(' ', '', $msg)) < 50) {
+        if (strlen(str_replace(' ', '', $msg)) < 5) {
             echo "<mark>  Message Body needs to  consist of atleast 50 characters<mark/>";
             return;
         }

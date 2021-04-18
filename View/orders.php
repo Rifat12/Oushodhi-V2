@@ -16,48 +16,18 @@ if ($_SESSION['flag'] != true) {
 </head>
 
 <body>
+
     <?php include 'internalheader.php'; ?>
     <br>
+    <h2 align="center">Accepted Orders</h2>
     <?php require("../Controller/orderProcess.php"); ?>
+    <center>
+        <button onclick="window.print()">Print Order Report</button>
+    </center>
+    <?php include 'internalfooter.php'; ?>
+    <br>
     <br>
 
-    <div class="wrapper">
-        <details>
-            <summary>
-                Accepted Orders
-            </summary>
-
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Customer ID</th>
-                        <th>Amount Worth</th>
-                        <th>Order Time</th>
-                        <th>Delivery Type</th>
-                        <th>Prescription Provided</th>
-                        <th>State</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>25444</td>
-                        <td>43424</td>
-                        <td>2100</td>
-                        <td>15:00</td>
-                        <td>Express</td>
-                        <td>Yes</td>
-                        <td><a href="">Accepted</a></td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </details>
-    </div>
-
-    <button onclick="window.print()">Print Order Report</button>
-    <?php include 'internalfooter.php'; ?>
 </body>
 
 </html>
