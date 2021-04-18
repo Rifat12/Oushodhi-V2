@@ -57,13 +57,15 @@ if ($_SESSION['flag'] != true) {
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea id="msg" name="message" rows="4" cols="50">  </textarea>
+                        <textarea id="msg" name="msg" rows="4" cols="50">  </textarea>
                     </td>
+                </tr>
+                <tr>
                 </tr>
 
                 <tr>
-                    <td colspan="2">
-                        <input type='submit' value='Send'>
+                    <td>
+                        <input type='submit' name="send" value='Send'> <input type='reset' value='Reset'>
                     </td>
                 </tr>
             </table>
@@ -74,9 +76,19 @@ if ($_SESSION['flag'] != true) {
     <?php include 'internalfooter.php'; ?>
     <?php
 
-    if (isset($_POST['sub']) && isset($_POST['date']) && isset($_POST['message'])) {
-        $sub = $_POST['sub'];
-        $msg = $_POST['message'];
+    if (isset($_POST['send'])) {
+        $_SESSION['sub'] = $_POST['sub'];
+        $_SESSION['msg'] = $_POST['msg'];
+
+        $sub = $_SESSION['sub'];
+        $msg = $_SESSION['msg'];
+
+        setcookie('sub', $sub, time() + (86400 * 7));
+        setcookie('msg', $msg, time() + (86400 * 7));
+
+
+        //$_COOKIE['sub'] = $sub;
+        //$_COOKIE['msg'] = $msg;
 
         if (strlen(str_replace(' ', '', $sub)) < 10) {
             echo "<mark>  Subject needs to  consist of atleast 10 characters<mark/>";
@@ -89,6 +101,35 @@ if ($_SESSION['flag'] != true) {
         }
         echo "<mark>  Successfully Sent<mark/>";
     }
+    /*
+    if (!empty($_POST['retrieve'])) {
+        setcookie('sub', $sub, time() + (86400 * 7)); // 86400 = 1 day
+        setcookie('msg', $msg, time() + (86400 * 7));
+    } else {
+        if (isset($_COOKIE['sub'])) {
+            setcookie('sub', '');
+        }
+        if (isset($_COOKIE['msg'])) {
+            setcookie('msg', '');
+        }
+    }
+    
+    if (isset($_GET['retrieve'])) {
+        $sub = $_SESSION['sub'];
+        $msg = $_SESSION['msg'];
+    } else {
+        if (isset($_COOKIE['sub'])) {
+            setcookie('sub', '');
+        }
+        if (isset($_COOKIE['msg'])) {
+            setcookie('msg', '');
+        }
+    }
+    */
+
+
+
+
     ?>
 </body>
 

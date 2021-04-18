@@ -40,7 +40,9 @@ if ($_SESSION['flag'] != true) {
                         Subject:
                     </td>
                     <td>
-                        <input type="text" name='sub'>
+                        <input type="text" name='sub' value="<?php
+                                                                $sub = $_COOKIE['sub'] ?? "";
+                                                                echo $sub; ?>">
                     </td>
                 </tr>
                 <tr>
@@ -70,13 +72,18 @@ if ($_SESSION['flag'] != true) {
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea id="msg" name="message" rows="4" cols="50">  </textarea>
+                        <textarea id="msg" name="message" rows="4" cols="50">
+                        <?php
+                        $msg = $_COOKIE['msg'] ?? "";
+                        echo $msg;
+                        ?>
+                        </textarea>
                     </td>
                 </tr>
 
                 <tr>
                     <td colspan="2">
-                        <input type='submit' value='Send'>
+                        <input type='submit' value='Send'> <input type='reset' value='Reset'>
                     </td>
                 </tr>
             </table>
