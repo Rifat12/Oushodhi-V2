@@ -71,10 +71,6 @@ if ($_SESSION['flag'] != true) {
                 <tr>
                     <td colspan="2">
                         <textarea id="msg" name="message" rows="4" cols="50">
-                        <?php
-                        $msg = $_COOKIE['msg'] ?? "";
-                        echo $msg;
-                        ?>
                         </textarea>
                     </td>
                 </tr>

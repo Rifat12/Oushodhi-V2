@@ -13,6 +13,7 @@ if (isset($_POST['logusername']) && isset($_POST['logpassword'])) {
 
     if (in_array($password, $aa) && in_array($username, $aa)) {
         $_SESSION['flag'] = true;
+        $_SESSION['username'] = $username;
         header('location: ../View/dashboard.php');
     } else {
         $_SESSION['flag'] = false;

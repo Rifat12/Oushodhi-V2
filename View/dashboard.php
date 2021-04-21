@@ -24,7 +24,7 @@ $info = json_decode($a, true);
 <body>
     <?php include 'internalheader.php'; ?>
 
-    <h1 align="center">Welcome, <strong><?php echo $info['username'] ?></strong>!</h1>
+    <h1 align="center">Welcome, <strong><?php echo $_SESSION['username'] ?></strong>!</h1>
     <br>
     <fieldset>
         <legend>
