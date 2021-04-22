@@ -47,10 +47,6 @@ if (isset($_POST['update'])) {
     }
 }
 
-
-
-
-
 if (isset($_POST['del'])) {
     $id = $_POST['del'];
     if (!deleteProduct($id)) {
@@ -61,10 +57,6 @@ if (isset($_POST['del'])) {
         header('location: ../view/products.php');
     }
 }
-
-
-
-
 
 
 ?>

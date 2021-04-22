@@ -5,7 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration</title>
+
+    <style>
+        .warning {
+            color: red;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -14,7 +21,7 @@
         <legend>
             <b>REGISTRATION</b>
         </legend>
-        <form action="../Controller/checkreg.php"' method=' POST'>
+        <form action="../Controller/checkreg.php" onsubmit="return validate()" method=' POST' name="reg">
             <table align="">
                 <tr>
                     <td>
@@ -23,6 +30,7 @@
                     <td>
                         <input type="text" name='name'>
                     </td>
+                    <td id="name" class="warning"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -36,6 +44,8 @@
                     <td>
                         <input type="email" name='email'>
                     </td>
+                    <td id="email" class="warning"></td>
+
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -49,6 +59,7 @@
                     <td>
                         <input type="username" name='username'>
                     </td>
+                    <td id="user" class="warning"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -62,6 +73,8 @@
                     <td>
                         <input type="password" name='password'>
                     </td>
+                    <td id="pass" class="warning"></td>
+
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -75,6 +88,7 @@
                     <td>
                         <input type="password" name='confirmpassword'>
                     </td>
+                    <td id="confirmpass" class="warning"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -88,6 +102,7 @@
                     <td>
                         <input type="text" name='fav'>
                     </td>
+                    <td id="fav" class="warning"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -99,8 +114,9 @@
                         <label for="date">Date of Birth:</label>
                     </td>
                     <td>
-                        <input type="date" name='date' value="date" placeholder="YYYY-MM-DD">
+                        <input type="date" name='date'>
                     </td>
+                    <td id="date" class="warning"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -118,6 +134,7 @@
                             <input type='radio' name='gender' value='others'>Others
                         </fieldset>
                     </td>
+                    <td id="gender" class="warning"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -132,6 +149,7 @@
     </fieldset>
     <br>
     <?php include 'publicFooter.php'; ?>
+    <script src="../Controller/JSformValidation.js"></script>
 </body>
 
 </html>
