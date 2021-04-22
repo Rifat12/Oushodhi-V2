@@ -1,3 +1,15 @@
+<?php
+
+$a = file_get_contents("../Model/users.json");
+
+$aa = json_decode($a, true);
+
+$u = $aa['username'];
+$p = $aa['password'];
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +18,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 <body>
@@ -14,7 +27,7 @@
         <legend>
             LOGIN
         </legend>
-        <form action='../Controller/checklogin.php' method='POST'>
+        <form action='../Controller/checklogin.php' onsubmit="return auth();" name="login" method='POST'>
             <table>
                 <tr>
                     <td>
@@ -37,6 +50,9 @@
                         <hr>
                     </td>
                 </tr>
+
+
+
                 <tr>
                     <td colspan="2">
                         <input type='submit' value='Submit'>
@@ -49,10 +65,38 @@
                         <a href='./forget.php'>Forgot Password?</a>
                     </td>
                 </tr>
+
             </table>
         </form>
+
+        <table>
+            <tr>
+                <td style="color: red;" id="warning"></td>
+            </tr>
+        </table>
     </fieldset>
     <br>
+    <script>
+        function auth() {
+            const logpass = document.login.logpassword.value;
+            const loguser = document.login.logusername.value;
+            const user = "<?php echo $u; ?>".replace(" ", "");
+            const pass = "<?php echo $p; ?>".replace(" ", "");
+
+            if (loguser != user) {
+                document.querySelector("#warning").innerHTML = "Wrong Credentials!";
+                return false;
+            }
+
+            if (logpass != pass) {
+                document.querySelector("#warning").innerHTML = "Wrong Credentials!";
+                return false;
+            }
+            return true;
+
+        }
+    </script>
+
     <?php include 'publicFooter.php'; ?>
 </body>
 

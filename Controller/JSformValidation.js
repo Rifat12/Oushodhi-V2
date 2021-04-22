@@ -5,28 +5,36 @@ function validate() {
   const user = document.reg.username.value;
   const color = document.reg.fav.value;
 
-  function validateEmail() {
-    var emailID = document.reg.email.value;
-    atpos = emailID.indexOf("@");
-    dotpos = emailID.lastIndexOf(".");
+  function validateName(name) {
+    const str = name.replace(" ", "");
 
-    if (atpos < 1 || dotpos - atpos < 2) {
-      return false;
+    for (let i = 0; i < str.length; i++) {
+      if (
+        !((str[i] >= "a" && str[i] <= "z") || (str[i] >= "A" && str[i] <= "Z"))
+      ) {
+        return false;
+      }
     }
+
     return true;
   }
 
-  function nameValidation() {
-    newname = document.reg.name.value;
-    fullname = newname.trim();
-    for (let i = 0; i < fullname.length; i++) {
+  function validateUserName(name) {
+    const str = name.replace(" ", "");
+
+    for (let i = 0; i < str.length; i++) {
       if (
-        !(fullname.charCodeAt(i) >= 97 && fullname.charCodeAt(i) <= 122) &&
-        !(fullname.charCodeAt(i) >= 65 && fullname.charCodeAt(i) <= 90)
+        !(
+          (str[i] >= "a" && str[i] <= "z") ||
+          (str[i] >= "A" && str[i] <= "Z") ||
+          (str[i] >= 0 && str[i] <= 9)
+        )
       ) {
+        return false;
       }
     }
-    return false;
+
+    return true;
   }
 
   function isSpecial(str) {
@@ -43,6 +51,17 @@ function validate() {
     return false;
   }
 
+  function validateEmail() {
+    var emailID = document.reg.email.value;
+    atpos = emailID.indexOf("@");
+    dotpos = emailID.lastIndexOf(".");
+
+    if (atpos < 1 || dotpos - atpos < 2) {
+      return false;
+    }
+    return true;
+  }
+
   if (name == "") {
     document.reg.name.focus();
     //alert("Please provide your name!");
@@ -50,11 +69,16 @@ function validate() {
     return false;
   }
 
-  if (name < 5) {
+  if (name.length < 5) {
     document.reg.name.focus();
     //alert("Please provide your name!");
     document.querySelector("#name").innerHTML =
-      "Name must only be Alphabetical and minimum 5 characters!";
+      "Name must be minimum 5 characters!";
+    return false;
+  }
+
+  if (!validateName(name)) {
+    document.querySelector("#name").innerHTML = "Name must be Alphabets only";
     return false;
   }
 
@@ -72,6 +96,20 @@ function validate() {
     return false;
   }
 
+  if (user.length < 3) {
+    document.querySelector("#user").innerHTML =
+      "Username must be at least 3 characters";
+    //alert();
+    document.reg.username.focus();
+    return false;
+  }
+
+  if (!validateUserName(user)) {
+    document.querySelector("#user").innerHTML =
+      "Username must be Alphaneumeric";
+    return false;
+  }
+
   if (password == "") {
     document.querySelector("#pass").innerHTML = "Please provide your password!";
     //alert("Please provide your password!");
@@ -85,7 +123,7 @@ function validate() {
 
   if (!isSpecial(password) && !(password.length < 8)) {
     document.querySelector("#pass").innerHTML =
-      "Password must have a special character and be at leastr 8 characters";
+      "Password must have a special character and be at least 8 characters";
     return false;
   }
 
