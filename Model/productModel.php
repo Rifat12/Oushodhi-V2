@@ -28,17 +28,29 @@ function getAllProduct()
 	return $products;
 }
 
+function getProductForAJAX($q)
+{
+
+	$conn = getConnection();
+	$sql = "select * from products where p_id= '" . $q . "'";
+	$result = mysqli_query($conn, $sql);
+
+	return $result;
+}
+
+
+
+
+
+
 function getProductById($id)
 {
 
 	$conn = getConnection();
 	$sql = "select * from products where p_id='{$id}'";
 	$result = mysqli_query($conn, $sql);
-	$row = mysqli_fetch_assoc($result);
 
-
-
-	return $row;
+	return $result;
 }
 
 function updateProduct($id, $arr)
