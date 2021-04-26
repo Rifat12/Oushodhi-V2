@@ -18,7 +18,8 @@
             <nav>
                 <a href="./publichome.php">Home</a> |
                 <a href="./about.php">About Us</a> |
-                <a href="./staff.php">Staff Portal</a>
+                <a href="./login.php">Login</a> |
+                <a href="./reg.php">Register</a> |
             </nav>
         </td>
         </th>
