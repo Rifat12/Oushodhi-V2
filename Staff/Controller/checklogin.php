@@ -1,9 +1,7 @@
 <?php
 
-$a = file_get_contents("../Model/users.json");
-
-$aa = json_decode($a, true);
-
+require_once('../model/dbConfig.php');
+require_once('../model/userModel.php');
 
 
 session_start();
@@ -11,10 +9,23 @@ if (isset($_POST['logusername']) && isset($_POST['logpassword'])) {
     $username = $_POST['logusername'];
     $password = $_POST['logpassword'];
 
-    if (in_array($password, $aa) && in_array($username, $aa)) {
+
+    if (validateUser($username, $password)) {
         $_SESSION['flag'] = true;
         $_SESSION['username'] = $username;
-        header('location: ../View/dashboard.php');
+        $r = getRole($username)['roll'];
+        if (!$r) {
+            echo "db error";
+            print_r($r);
+            return;
+        }
+        if ($r == 3) {
+            header('location: ../View/dashboard.php');
+        }
+        if ($r == 1) {
+            $_SESSION['flag1'] = true;
+            header('location: ../Owner/view/dashboard.php');
+        }
     } else {
         $_SESSION['flag'] = false;
         //header('location: login.php');

@@ -1,3 +1,3 @@
 <?php
 
-header('location: view/publichome.php');
+header('location: Staff/view/publichome.php');

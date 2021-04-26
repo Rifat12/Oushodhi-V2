@@ -1,6 +1,8 @@
 <?php
+require_once('../model/dbConfig.php');
+require_once('../model/userModel.php');
 session_start();
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmpassword']) && isset($_POST['date'])  && isset($_POST['fav'])  && isset($_POST['gender'])) {
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmpassword']) && isset($_POST['date'])  && isset($_POST['fav'])  && isset($_POST['gender']) && isset($_POST['role'])) {
 
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -10,6 +12,8 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username'])
     $gender = $_POST['gender'];
     $date = $_POST['date'];
     $fav = $_POST['fav'];
+    $roll = intval($_POST['role']);
+
 
 
 
@@ -108,6 +112,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username'])
     }
 
 
+
     $array1 = [];
     $array1 += ['username' => $username];
     $array1 += ['name' => $name];
@@ -116,11 +121,15 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['username'])
     $array1 += ['gender' => $gender];
     $array1 += ['date' => $date];
     $array1 += ['fav' => $fav];
+    $array1 += ['roll' => $roll];
 
-    $json = json_encode($array1, JSON_PRETTY_PRINT);
-    file_put_contents("../Model/users.json", $json);
-
-    header('location: ../View/login.php');
+    if (insertUser($array1)) {
+        header('location: ../view/login.php');
+    } else {
+        echo "Registration Failed <br>";
+        echo "<br>";
+        return;
+    }
 } else {
     echo "Please Fill Everything";
 }

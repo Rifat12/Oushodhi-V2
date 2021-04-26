@@ -23,6 +23,24 @@
         </legend>
         <form action="../Controller/checkreg.php" onsubmit="return validate()" method=' POST' name="reg">
             <table align="">
+
+                <tr>
+                    <td><label for="role">Register As</label></td>
+                    <td colspan="2">
+
+                        <input type='radio' name='role' value='1'>Owner
+                        <input type='radio' name='role' value='2'>Admin
+                        <input type='radio' name='role' value='3'>Staff
+                        <input type='radio' name='role' value='4'>Customer
+
+                    </td>
+                    <td id="role" class="warning"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         Full Name:

@@ -1,15 +1,3 @@
-<?php
-
-$a = file_get_contents("../Model/users.json");
-
-$aa = json_decode($a, true);
-
-$u = $aa['username'];
-$p = $aa['password'];
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +15,7 @@ $p = $aa['password'];
         <legend>
             LOGIN
         </legend>
-        <form action='../Controller/checklogin.php' onsubmit="return auth();" name="login" method='POST'>
+        <form action='../Controller/checklogin.php' onsubmit="" name="login" method='POST'>
             <table>
                 <tr>
                     <td>

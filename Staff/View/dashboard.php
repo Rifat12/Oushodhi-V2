@@ -4,10 +4,10 @@ if ($_SESSION['flag'] != true) {
     header('location: login.php');
 }
 
-$a = file_get_contents("../Model/users.json");
+require_once('../model/dbConfig.php');
+require_once('../model/userModel.php');
 
-$info = json_decode($a, true);
-
+$info = getUserByName($_SESSION['username']);
 
 ?>
 

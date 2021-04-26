@@ -4,7 +4,7 @@
 	$host = 'localhost';
 	$dbUser = 'rifat';
 	$dbPass = 'Test1234';
-	$dbName = 'rifatdb';
+	$dbName = 'webtech';
 	function getConnection()
 	{
 		global $host, $dbUser, $dbPass, $dbName;
