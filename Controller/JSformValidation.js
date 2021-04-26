@@ -142,7 +142,6 @@ function validate() {
 
   if (!isNaN(document.reg.gender.value)) {
     document.querySelector("#gender").innerHTML = "Please select your Gender!";
-    document.reg.gender.focus();
     return false;
   }
 
