@@ -24,7 +24,7 @@ if (isset($_POST['logusername']) && isset($_POST['logpassword'])) {
         }
         if ($r == 1) {
             $_SESSION['flag1'] = true;
-            header('location: ../Owner/view/dashboard.php');
+            header('location: ../../Owner/view/dashboard.php');
         }
     } else {
         $_SESSION['flag'] = false;
